@@ -1,5 +1,9 @@
-workflow {
+workflow "Page Someone" {
+  on = "issues"
+  resolves = ["Check for label"]
 }
 
-actions {
+action "Check for label" {
+  uses = "actions/bin/filter@master"
+  args = "label urgent"
 }
