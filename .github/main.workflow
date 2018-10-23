@@ -1,9 +1,13 @@
-workflow "Page Someone" {
-  on = "issues"
-  resolves = ["Check for label"]
+workflow "IDENTIFIER" {
+  on = "EVENT"
+  resolves = "ACTION2"
 }
 
-action "Check for label" {
-  uses = "actions/bin/filter@master"
-  args = "label urgent"
+action "ACTION1" {
+  uses = "docker://image1"
+}
+
+action "ACTION2" {
+  needs = "ACTION1"
+  uses = "docker://image2"
 }
